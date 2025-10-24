@@ -118,95 +118,161 @@ const EcosystemSection = () => {
               transition={{ duration: 0.6, delay: 0.1 * index, ease: 'easeOut' }}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
-              className="domain-card-new group relative rounded-3xl overflow-hidden cursor-pointer"
+              className="domain-card-flip relative rounded-3xl cursor-pointer"
               style={{
-                background: 'rgba(20, 20, 30, 0.6)',
-                border: '1px solid rgba(138, 43, 226, 0.2)',
-                backdropFilter: 'blur(20px)',
-                minHeight: '420px'
+                minHeight: '480px',
+                perspective: '1000px'
               }}
               data-testid={`domain-card-${index}`}
             >
-              {/* Image Container */}
-              <div className="relative h-56 overflow-hidden">
-                <motion.img
-                  src={domain.image}
-                  alt={domain.title}
-                  className="w-full h-full object-cover"
-                  animate={{
-                    scale: hoveredCard === index ? 1.1 : 1
-                  }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                />
-                {/* Gradient Overlay */}
+              {/* Card Inner Container for Flip */}
+              <motion.div
+                className="relative w-full h-full"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                }}
+                animate={{
+                  rotateY: hoveredCard === index ? 180 : 0
+                }}
+              >
+                {/* Front Side */}
                 <div 
-                  className="absolute inset-0"
+                  className="absolute inset-0 rounded-3xl overflow-hidden"
                   style={{
-                    background: hoveredCard === index 
-                      ? 'linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.95) 100%)'
-                      : 'linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.8) 100%)'
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    background: 'rgba(20, 20, 30, 0.6)',
+                    border: '1px solid rgba(138, 43, 226, 0.2)',
+                    backdropFilter: 'blur(20px)'
                   }}
-                ></div>
-                {/* Icon */}
-                <div className="absolute top-4 right-4 text-5xl">
-                  {domain.icon}
+                >
+                  {/* Image Container */}
+                  <div className="relative h-full overflow-hidden">
+                    <img
+                      src={domain.image}
+                      alt={domain.title}
+                      className="w-full h-full object-cover"
+                      style={{
+                        filter: 'brightness(0.8)'
+                      }}
+                    />
+                    {/* Gradient Overlay */}
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        background: 'linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.95) 100%)'
+                      }}
+                    ></div>
+                    
+                    {/* Icon */}
+                    <div className="absolute top-6 right-6 text-6xl">
+                      {domain.icon}
+                    </div>
+
+                    {/* Title at Bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-8">
+                      <h3 
+                        className="text-4xl font-bold mb-2"
+                        style={{ 
+                          color: '#00FFFF',
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          textShadow: '0 0 30px rgba(0, 255, 255, 0.5)'
+                        }}
+                      >
+                        {domain.shortTitle}
+                      </h3>
+                      <p 
+                        className="text-lg"
+                        style={{ 
+                          color: '#AAAAAA',
+                          fontFamily: 'Montserrat, sans-serif'
+                        }}
+                      >
+                        Hover to learn more
+                      </p>
+                    </div>
+
+                    {/* Glow Effect */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        boxShadow: '0 0 60px rgba(0, 255, 255, 0.3) inset',
+                        borderRadius: '1.5rem'
+                      }}
+                    ></div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-6">
-                {/* Title */}
-                <h3 
-                  className="text-2xl font-bold mb-3 transition-colors duration-300"
-                  style={{ 
-                    color: hoveredCard === index ? '#00FFFF' : '#EAEAEA',
-                    fontFamily: 'Space Grotesk, sans-serif'
-                  }}
-                >
-                  {domain.title}
-                </h3>
-
-                {/* Description */}
-                <p 
-                  className="text-base leading-relaxed mb-4"
-                  style={{ 
-                    color: '#AAAAAA', 
-                    fontFamily: 'Montserrat, sans-serif',
-                    lineHeight: '1.6'
-                  }}
-                >
-                  {domain.description}
-                </p>
-
-                {/* Learn More Link */}
-                <motion.div
-                  className="flex items-center gap-2 text-sm font-semibold"
-                  animate={{
-                    x: hoveredCard === index ? 5 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{ 
-                    color: '#8A2BE2',
-                    fontFamily: 'Montserrat, sans-serif'
-                  }}
-                >
-                  Learn More
-                  <ArrowRight size={16} />
-                </motion.div>
-              </div>
-
-              {/* Hover Glow Effect */}
-              {hoveredCard === index && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="absolute inset-0 pointer-events-none"
+                {/* Back Side */}
+                <div 
+                  className="absolute inset-0 rounded-3xl overflow-hidden p-8 flex flex-col justify-center"
                   style={{
-                    boxShadow: '0 0 60px rgba(0, 255, 255, 0.3) inset',
-                    borderRadius: '1.5rem'
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    background: `linear-gradient(135deg, rgba(138, 43, 226, 0.3) 0%, rgba(0, 255, 255, 0.2) 100%)`,
+                    border: '2px solid rgba(0, 255, 255, 0.4)',
+                    backdropFilter: 'blur(20px)'
                   }}
-                ></motion.div>
-              )}
+                >
+                  {/* Background Pattern */}
+                  <div 
+                    className="absolute inset-0 opacity-10"
+                    style={{
+                      backgroundImage: `url(${domain.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      filter: 'blur(10px)'
+                    }}
+                  ></div>
+
+                  <div className="relative z-10">
+                    {/* Icon */}
+                    <div className="text-6xl mb-6">{domain.icon}</div>
+                    
+                    {/* Full Title */}
+                    <h3 
+                      className="text-3xl font-bold mb-4"
+                      style={{ 
+                        color: '#00FFFF',
+                        fontFamily: 'Space Grotesk, sans-serif',
+                        textShadow: '0 0 20px rgba(0, 255, 255, 0.5)'
+                      }}
+                    >
+                      {domain.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p 
+                      className="text-lg leading-relaxed mb-6"
+                      style={{ 
+                        color: '#EAEAEA', 
+                        fontFamily: 'Montserrat, sans-serif',
+                        lineHeight: '1.7'
+                      }}
+                    >
+                      {domain.description}
+                    </p>
+
+                    {/* Learn More Link */}
+                    <div
+                      className="flex items-center gap-2 text-base font-semibold"
+                      style={{ 
+                        color: '#8A2BE2',
+                        fontFamily: 'Montserrat, sans-serif'
+                      }}
+                    >
+                      <span className="px-4 py-2 rounded-lg" style={{
+                        background: 'rgba(138, 43, 226, 0.2)',
+                        border: '1px solid rgba(138, 43, 226, 0.4)'
+                      }}>
+                        Learn More <ArrowRight size={16} className="inline ml-1" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

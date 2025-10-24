@@ -40,18 +40,33 @@
 
 /* Card Hover Effects */
 .pillar-card,
+.pillar-card-new,
 .domain-card,
+.domain-card-new,
 .product-card,
+.product-card-new,
 .platform-card,
 .testimonial-card {
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
 }
 
 .pillar-card:hover,
+.pillar-card-new:hover,
 .product-card:hover,
+.product-card-new:hover,
 .platform-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+}
+
+/* Refined Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.7;
 }
 
 /* Glassmorphism Effect */

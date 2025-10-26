@@ -5,7 +5,7 @@ import { FaQuora, FaPinterest } from 'react-icons/fa';
 
 const ContactFooter = () => {
   const socialLinks = [
-    { name: 'GitHub', icon: '🔗', url: 'https://github.com/neurotitan' },
+    { name: 'GitHub', icon: '🔗', url: 'https://github.com/NeuroTitan-Hub' },
     { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://linkedin.com' },
     { name: 'Instagram', icon: <Instagram size={20} />, url: 'https://instagram.com' },
     { name: 'Quora', icon: <FaQuora size={20} />, url: 'https://quora.com' },

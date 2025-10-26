@@ -69,7 +69,7 @@ const HeroSection = () => {
           </p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }} className="flex flex-wrap gap-6 justify-center items-center" style={{ pointerEvents: 'auto' }}>
-            <a href="#products" className="group px-8 py-4 text-base font-medium rounded-sm transition-all duration-300" style={{ background: '#FFFFFF', color: '#000000', border: '1px solid #FFFFFF' }}>
+            <a href="https://github.com/NeuroTitan-Hub" target="_blank" rel="noopener noreferrer" className="group px-8 py-4 text-base font-medium rounded-sm transition-all duration-300" style={{ background: '#FFFFFF', color: '#000000', border: '1px solid #FFFFFF' }}>
               <span className="inline-flex items-center gap-2">
                 Explore Projects
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,6 +81,15 @@ const HeroSection = () => {
             <a href="#research" className="group px-8 py-4 text-base font-medium rounded-sm transition-all duration-300" style={{ background: 'transparent', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
               <span className="inline-flex items-center gap-2">
                 Research Lab
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+            
+            <a href="#campus-ambassador" className="group px-8 py-4 text-base font-medium rounded-sm transition-all duration-300 hover:scale-105" style={{ background: 'transparent', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+              <span className="inline-flex items-center gap-2">
+                Apply as Campus Ambassador
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

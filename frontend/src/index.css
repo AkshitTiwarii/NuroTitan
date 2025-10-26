@@ -50,6 +50,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide Emergent badge */
+#emergent-badge,
+a[href*="emergent.sh"],
+a[href*="emergentagent.com"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Premium Minimalist Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

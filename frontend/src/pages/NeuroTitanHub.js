@@ -7,10 +7,12 @@ import ResearchLabSection from '../components/ResearchLabSection';
 import ProductsSection from '../components/ProductsSection';
 import CommunitySection from '../components/CommunitySection';
 import ContactFooter from '../components/ContactFooter';
+import MouseTracker from '../components/MouseTracker';
 
 const NeuroTitanHub = () => {
   return (
-    <div className="neurotitan-hub" data-testid="neurotitan-hub">
+    <div className="neurotitan-hub" data-testid="neurotitan-hub" style={{ position: 'relative' }}>
+      <MouseTracker />
       <HeroSection />
       <AboutSection />
       <EcosystemSection />

@@ -217,14 +217,9 @@ const ContactFooter = () => {
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                   >
                     <motion.a 
-                      href={`#${link.toLowerCase().replace(/ /g, '-')}`} 
-                      className="text-sm" 
-                      style={{ color: '#999999', textDecoration: 'none' }}
-                      whileHover={{ 
-                        color: '#FFFFFF',
-                        x: 4,
-                        transition: { duration: 0.2 }
-                      }}
+                      href={link === 'Campus Ambassador' ? 'https://docs.google.com/forms/d/e/1FAIpQLSdbtblF3w5Nqnckn_gW1zs3ybf24725lcJaZOKR54gunskXcg/viewform?usp=publish-editor' : `#${link.toLowerCase().replace(/ /g, '-')}`} 
+                      className="text-sm hover:underline" 
+                      style={{ color: '#AAAAAA' }}
                     >
                       {link}
                     </motion.a>

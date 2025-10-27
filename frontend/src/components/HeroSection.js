@@ -87,7 +87,7 @@ const HeroSection = () => {
               </span>
             </a>
             
-            <a href="#campus-ambassador" className="group px-8 py-4 text-base font-medium rounded-sm transition-all duration-300 hover:scale-105" style={{ background: 'transparent', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdbtblF3w5Nqnckn_gW1zs3ybf24725lcJaZOKR54gunskXcg/viewform?usp=publish-editor" className="group px-8 py-4 text-base font-medium rounded-sm transition-all duration-300 hover:scale-105" style={{ background: 'transparent', color: '#FFFFFF', border: '1px solid rgba(255, 255, 255, 0.3)' }}>
               <span className="inline-flex items-center gap-2">
                 Apply as Campus Ambassador
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
